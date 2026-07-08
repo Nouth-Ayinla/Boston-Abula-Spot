@@ -216,7 +216,6 @@ export default function Index() {
 
             {/* Right: bowl + interactive orbiting carousel (Desktop only) */}
             <div className="hidden lg:flex orbit-container relative z-10 mx-auto aspect-square w-full max-w-[280px] sm:max-w-[360px] md:max-w-[400px] items-center justify-center overflow-visible select-none">
-
               {/* Dashed track */}
               <div
                 aria-hidden
