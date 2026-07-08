@@ -239,7 +239,7 @@ export default function TrackingPage() {
             </span>
             <div className="w-full">
               <p className="text-sm font-semibold text-foreground">Delivery Address</p>
-              
+
               {!isEditingLocation && location ? (
                 <div className="mt-2 flex items-center justify-between gap-3">
                   <p className="text-sm text-muted-foreground">{location}</p>
@@ -367,10 +367,15 @@ export default function TrackingPage() {
             </button>
 
             {/* Receipt Preview */}
-            <div id="receipt-print-area" className="mt-4 border-2 border-dashed border-border bg-card p-5 rounded-2xl">
+            <div
+              id="receipt-print-area"
+              className="mt-4 border-2 border-dashed border-border bg-card p-5 rounded-2xl"
+            >
               <div className="text-center border-b border-border/80 pb-4 mb-4">
                 <h3 className="font-display text-lg font-bold text-primary">Boston Abula Spot</h3>
-                <p className="text-[10px] text-muted-foreground">Futa NorthGate, Akure, Ondo, Nigeria</p>
+                <p className="text-[10px] text-muted-foreground">
+                  Futa NorthGate, Akure, Ondo, Nigeria
+                </p>
               </div>
 
               <div className="space-y-1.5 text-xs text-muted-foreground border-b border-border/80 pb-4 mb-4">
@@ -380,12 +385,19 @@ export default function TrackingPage() {
                 </div>
                 <div className="flex justify-between">
                   <span>Date:</span>
-                  <span className="text-foreground">{new Date(order.placedAt).toLocaleString()}</span>
+                  <span className="text-foreground">
+                    {new Date(order.placedAt).toLocaleString()}
+                  </span>
                 </div>
                 {location && (
                   <div className="flex justify-between">
                     <span>Delivery To:</span>
-                    <span className="text-foreground text-right truncate max-w-[180px]" title={location}>{location}</span>
+                    <span
+                      className="text-foreground text-right truncate max-w-[180px]"
+                      title={location}
+                    >
+                      {location}
+                    </span>
                   </div>
                 )}
               </div>
@@ -394,11 +406,17 @@ export default function TrackingPage() {
                 {(order.items || []).map((item: any, i: number) => (
                   <div key={i} className="text-xs">
                     <div className="flex justify-between font-medium">
-                      <span className="text-foreground">{item.name} ×{item.qty}</span>
-                      <span className="text-foreground font-semibold">{formatNaira(item.price * item.qty)}</span>
+                      <span className="text-foreground">
+                        {item.name} ×{item.qty}
+                      </span>
+                      <span className="text-foreground font-semibold">
+                        {formatNaira(item.price * item.qty)}
+                      </span>
                     </div>
                     {item.note && (
-                      <p className="text-[10px] text-muted-foreground mt-0.5 italic pl-2 border-l border-border">{item.note}</p>
+                      <p className="text-[10px] text-muted-foreground mt-0.5 italic pl-2 border-l border-border">
+                        {item.note}
+                      </p>
                     )}
                   </div>
                 ))}
@@ -428,43 +446,45 @@ export default function TrackingPage() {
               {/* Barcode SVG */}
               <div className="flex flex-col items-center justify-center mt-6 opacity-85">
                 <svg width="140" height="32" className="text-foreground">
-                  <rect x="0" width="2" height="32" fill="currentColor"/>
-                  <rect x="4" width="1" height="32" fill="currentColor"/>
-                  <rect x="6" width="3" height="32" fill="currentColor"/>
-                  <rect x="11" width="1" height="32" fill="currentColor"/>
-                  <rect x="14" width="2" height="32" fill="currentColor"/>
-                  <rect x="18" width="4" height="32" fill="currentColor"/>
-                  <rect x="23" width="1" height="32" fill="currentColor"/>
-                  <rect x="26" width="3" height="32" fill="currentColor"/>
-                  <rect x="30" width="2" height="32" fill="currentColor"/>
-                  <rect x="34" width="1" height="32" fill="currentColor"/>
-                  <rect x="37" width="3" height="32" fill="currentColor"/>
-                  <rect x="42" width="4" height="32" fill="currentColor"/>
-                  <rect x="47" width="1" height="32" fill="currentColor"/>
-                  <rect x="50" width="2" height="32" fill="currentColor"/>
-                  <rect x="54" width="3" height="32" fill="currentColor"/>
-                  <rect x="58" width="1" height="32" fill="currentColor"/>
-                  <rect x="61" width="4" height="32" fill="currentColor"/>
-                  <rect x="67" width="2" height="32" fill="currentColor"/>
-                  <rect x="70" width="1" height="32" fill="currentColor"/>
-                  <rect x="73" width="3" height="32" fill="currentColor"/>
-                  <rect x="78" width="2" height="32" fill="currentColor"/>
-                  <rect x="81" width="4" height="32" fill="currentColor"/>
-                  <rect x="87" width="1" height="32" fill="currentColor"/>
-                  <rect x="90" width="3" height="32" fill="currentColor"/>
-                  <rect x="95" width="2" height="32" fill="currentColor"/>
-                  <rect x="98" width="1" height="32" fill="currentColor"/>
-                  <rect x="101" width="4" height="32" fill="currentColor"/>
-                  <rect x="107" width="2" height="32" fill="currentColor"/>
-                  <rect x="110" width="1" height="32" fill="currentColor"/>
-                  <rect x="113" width="3" height="32" fill="currentColor"/>
-                  <rect x="118" width="4" height="32" fill="currentColor"/>
-                  <rect x="124" width="1" height="32" fill="currentColor"/>
-                  <rect x="127" width="2" height="32" fill="currentColor"/>
-                  <rect x="131" width="3" height="32" fill="currentColor"/>
-                  <rect x="136" width="2" height="32" fill="currentColor"/>
+                  <rect x="0" width="2" height="32" fill="currentColor" />
+                  <rect x="4" width="1" height="32" fill="currentColor" />
+                  <rect x="6" width="3" height="32" fill="currentColor" />
+                  <rect x="11" width="1" height="32" fill="currentColor" />
+                  <rect x="14" width="2" height="32" fill="currentColor" />
+                  <rect x="18" width="4" height="32" fill="currentColor" />
+                  <rect x="23" width="1" height="32" fill="currentColor" />
+                  <rect x="26" width="3" height="32" fill="currentColor" />
+                  <rect x="30" width="2" height="32" fill="currentColor" />
+                  <rect x="34" width="1" height="32" fill="currentColor" />
+                  <rect x="37" width="3" height="32" fill="currentColor" />
+                  <rect x="42" width="4" height="32" fill="currentColor" />
+                  <rect x="47" width="1" height="32" fill="currentColor" />
+                  <rect x="50" width="2" height="32" fill="currentColor" />
+                  <rect x="54" width="3" height="32" fill="currentColor" />
+                  <rect x="58" width="1" height="32" fill="currentColor" />
+                  <rect x="61" width="4" height="32" fill="currentColor" />
+                  <rect x="67" width="2" height="32" fill="currentColor" />
+                  <rect x="70" width="1" height="32" fill="currentColor" />
+                  <rect x="73" width="3" height="32" fill="currentColor" />
+                  <rect x="78" width="2" height="32" fill="currentColor" />
+                  <rect x="81" width="4" height="32" fill="currentColor" />
+                  <rect x="87" width="1" height="32" fill="currentColor" />
+                  <rect x="90" width="3" height="32" fill="currentColor" />
+                  <rect x="95" width="2" height="32" fill="currentColor" />
+                  <rect x="98" width="1" height="32" fill="currentColor" />
+                  <rect x="101" width="4" height="32" fill="currentColor" />
+                  <rect x="107" width="2" height="32" fill="currentColor" />
+                  <rect x="110" width="1" height="32" fill="currentColor" />
+                  <rect x="113" width="3" height="32" fill="currentColor" />
+                  <rect x="118" width="4" height="32" fill="currentColor" />
+                  <rect x="124" width="1" height="32" fill="currentColor" />
+                  <rect x="127" width="2" height="32" fill="currentColor" />
+                  <rect x="131" width="3" height="32" fill="currentColor" />
+                  <rect x="136" width="2" height="32" fill="currentColor" />
                 </svg>
-                <span className="font-mono text-[9px] text-muted-foreground letter-spacing-1 mt-1">*{order.id}*</span>
+                <span className="font-mono text-[9px] text-muted-foreground letter-spacing-1 mt-1">
+                  *{order.id}*
+                </span>
               </div>
             </div>
 

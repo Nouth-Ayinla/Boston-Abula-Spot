@@ -19,7 +19,11 @@ const orbitDishes = [
   { ...MENU.find((m) => m.id === "abula-classic")!, label: "Classic Abula", img: images.heroAmala },
   { ...MENU.find((m) => m.id === "jollof-rice")!, label: "Smoky Jollof Rice", img: images.jollof },
   { ...MENU.find((m) => m.id === "semo-efo-riro")!, label: "Semo & Efo Riro", img: images.semo },
-  { ...MENU.find((m) => m.id === "assorted-meat")!, label: "Assorted Meats", img: images.assortedMeat },
+  {
+    ...MENU.find((m) => m.id === "assorted-meat")!,
+    label: "Assorted Meats",
+    img: images.assortedMeat,
+  },
   { ...MENU.find((m) => m.id === "dodo")!, label: "Fried Plantain", img: images.plantain },
   { ...MENU.find((m) => m.id === "efo-riro")!, label: "Efo Riro", img: images.efoRiro },
 ];
@@ -163,8 +167,9 @@ export default function Index() {
                         const step = 360 / orbitDishes.length;
                         setAngle(-i * step);
                       }}
-                      className={`h-2.5 transition-all rounded-full ${isActive ? "w-6 bg-primary" : "w-2.5 bg-border hover:bg-muted-foreground"
-                        }`}
+                      className={`h-2.5 transition-all rounded-full ${
+                        isActive ? "w-6 bg-primary" : "w-2.5 bg-border hover:bg-muted-foreground"
+                      }`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
                   );
@@ -253,8 +258,9 @@ export default function Index() {
                     >
                       <motion.div
                         onClick={() => selectDish(i)}
-                        className={`pointer-events-auto cursor-pointer rounded-full bg-background p-1 shadow-card transition-shadow hover:shadow-elegant ${isActive ? "ring-4 ring-primary ring-offset-2 scale-110" : ""
-                          }`}
+                        className={`pointer-events-auto cursor-pointer rounded-full bg-background p-1 shadow-card transition-shadow hover:shadow-elegant ${
+                          isActive ? "ring-4 ring-primary ring-offset-2 scale-110" : ""
+                        }`}
                         style={{
                           width: "var(--plate-size)",
                           height: "var(--plate-size)",
@@ -332,7 +338,9 @@ export default function Index() {
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              {MENU.filter((item) => ["abula-classic", "jollof-rice", "semo-efo-riro", "efo-riro"].includes(item.id)).map((item) => (
+              {MENU.filter((item) =>
+                ["abula-classic", "jollof-rice", "semo-efo-riro", "efo-riro"].includes(item.id),
+              ).map((item) => (
                 <Link
                   key={item.id}
                   href="/menu"

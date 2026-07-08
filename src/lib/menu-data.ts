@@ -63,7 +63,8 @@ export const MENU: MenuItem[] = [
   {
     id: "jollof-rice",
     name: "Smoky Jollof Rice",
-    description: "Authentic party-style smoky Jollof rice, served with fried chicken and sweet dodo",
+    description:
+      "Authentic party-style smoky Jollof rice, served with fried chicken and sweet dodo",
     price: 4200,
     category: "Signature",
     image: jollof,

@@ -28,11 +28,13 @@ Ensure you have Node.js installed (version 18+ recommended).
 ### Installation
 
 1. Install dependencies:
+
    ```bash
    npm install
    ```
 
 2. Run the development server:
+
    ```bash
    npm run dev
    ```
@@ -42,11 +44,13 @@ Ensure you have Node.js installed (version 18+ recommended).
 ## 📦 Building for Production
 
 Compile the production build:
+
 ```bash
 npm run build
 ```
 
 Start the production server:
+
 ```bash
 npm run start
 ```
