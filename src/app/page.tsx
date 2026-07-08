@@ -83,16 +83,13 @@ export default function Index() {
 
   const selectDish = (index: number) => {
     const step = 360 / orbitDishes.length;
-
-    // Find the shortest rotation path to the target index
-    // Current angle is at setAngle. We want: -index * step + k * 360 to be closest to current angle.
     const targetBase = -index * step;
     const currentAngle = angle;
-    const diff = ((targetBase - currentAngle + 180) % 360) - 180;
-    const normalizedDiff = diff < -180 ? diff + 360 : diff;
-
-    const targetAngle = currentAngle + normalizedDiff;
-    setAngle(targetAngle);
+    // Correct modulo that handles negatives: result always in (-180, 180]
+    let diff = (targetBase - currentAngle) % 360;
+    if (diff > 180) diff -= 360;
+    if (diff < -180) diff += 360;
+    setAngle(currentAngle + diff);
     setActiveIndex(index);
   };
 
@@ -219,16 +216,6 @@ export default function Index() {
 
             {/* Right: bowl + interactive orbiting carousel (Desktop only) */}
             <div className="hidden lg:flex orbit-container relative z-10 mx-auto aspect-square w-full max-w-[280px] sm:max-w-[360px] md:max-w-[400px] items-center justify-center overflow-visible select-none">
-              {/* Circular draggable drag target area */}
-              <motion.div
-                drag="x"
-                dragElastic={0.1}
-                dragMomentum={false}
-                onDrag={handleDrag}
-                onDragEnd={handleDragEnd}
-                className="absolute inset-0 z-30 cursor-grab active:cursor-grabbing rounded-full"
-                style={{ touchAction: "none" }}
-              />
 
               {/* Dashed track */}
               <div
@@ -240,10 +227,15 @@ export default function Index() {
                 }}
               />
 
-              {/* Orbiting plates */}
+              {/* Orbiting plates — drag on the wheel, click on individual plates */}
               <motion.div
-                className="absolute inset-0 pointer-events-none"
-                style={{ rotate: rotationSpring }}
+                drag="x"
+                dragElastic={0.1}
+                dragMomentum={false}
+                onDrag={handleDrag}
+                onDragEnd={handleDragEnd}
+                className="absolute inset-0 cursor-grab active:cursor-grabbing"
+                style={{ rotate: rotationSpring, touchAction: "none" }}
               >
                 {orbitDishes.map((d, i) => {
                   const angleOffset = (i / orbitDishes.length) * 360;
