@@ -12,6 +12,7 @@ interface PendingOrder {
   subtotal: number;
   discount: number;
   delivery: number;
+  items: any[];
 }
 
 const BANK = {
@@ -51,7 +52,15 @@ export default function PaymentPage() {
     const orderId = `AB-${Math.floor(1000 + Math.random() * 9000)}`;
     localStorage.setItem(
       "abula-active-order",
-      JSON.stringify({ id: orderId, placedAt: Date.now(), total: order?.total ?? 0 }),
+      JSON.stringify({
+        id: orderId,
+        placedAt: Date.now(),
+        total: order?.total ?? 0,
+        subtotal: order?.subtotal ?? 0,
+        discount: order?.discount ?? 0,
+        delivery: order?.delivery ?? 0,
+        items: order?.items ?? [],
+      }),
     );
     localStorage.removeItem("abula-pending-order");
     clear();
