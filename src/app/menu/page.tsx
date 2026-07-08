@@ -2,9 +2,10 @@
 
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 import { SiteHeader } from "@/components/SiteHeader";
 import { useCart } from "@/lib/cart-context";
-import { CATEGORIES, MENU, formatNaira, type Category, getImgSrc } from "@/lib/menu-data";
+import { CATEGORIES, MENU, formatNaira, type Category } from "@/lib/menu-data";
 
 export default function MenuPage() {
   const [active, setActive] = useState<Category | "All">("All");
@@ -58,8 +59,8 @@ export default function MenuPage() {
               key={item.id}
               className="relative flex flex-col rounded-3xl bg-card p-5 shadow-card transition-transform hover:-translate-y-1"
             >
-              <img
-                src={getImgSrc(item.image)}
+              <Image
+                src={item.image}
                 alt={item.name}
                 width={160}
                 height={160}

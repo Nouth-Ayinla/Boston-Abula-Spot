@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Star, ShoppingBag } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { useCart } from "@/lib/cart-context";
-import { MENU, formatNaira, images, getImgSrc } from "@/lib/menu-data";
+import { MENU, formatNaira, images } from "@/lib/menu-data";
 import {
   motion,
   useMotionValue,
@@ -138,8 +139,8 @@ export default function Index() {
 
                   {/* Mobile-only active dish image */}
                   <div className="my-6 flex justify-center lg:hidden">
-                    <img
-                      src={getImgSrc(activeDish.image)}
+                    <Image
+                      src={activeDish.image}
                       alt={activeDish.name}
                       width={300}
                       height={300}
@@ -281,8 +282,8 @@ export default function Index() {
                             className="h-full w-full"
                             style={{ transform: `rotate(${-angleOffset}deg)` }}
                           >
-                            <img
-                              src={getImgSrc(d.image)}
+                            <Image
+                              src={d.image}
                               alt={d.name}
                               width={160}
                               height={160}
@@ -308,8 +309,8 @@ export default function Index() {
                     transition={{ type: "spring", stiffness: 150, damping: 20 }}
                     className="w-full flex items-center justify-center"
                   >
-                    <img
-                      src={getImgSrc(activeDish.image)}
+                    <Image
+                      src={activeDish.image}
                       alt={activeDish.name}
                       width={512}
                       height={512}
@@ -346,8 +347,8 @@ export default function Index() {
                   href="/menu"
                   className="group rounded-3xl bg-card p-5 text-center shadow-card transition-transform hover:-translate-y-1"
                 >
-                  <img
-                    src={getImgSrc(item.image)}
+                  <Image
+                    src={item.image}
                     alt={item.name}
                     width={200}
                     height={200}

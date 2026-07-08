@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { formatNaira } from "@/lib/menu-data";
+import { type CartItem } from "@/lib/cart-context";
 
 interface ActiveOrder {
   id: string;
@@ -13,7 +14,7 @@ interface ActiveOrder {
   subtotal?: number;
   discount?: number;
   delivery?: number;
-  items?: any[];
+  items?: CartItem[];
 }
 
 const STEPS = [
@@ -103,7 +104,7 @@ export default function TrackingPage() {
           <div class="items">
             ${(order.items || [])
               .map(
-                (item: any) => `
+                (item: CartItem) => `
               <div>
                 <div class="item-row">
                   <span>${item.name} x${item.qty}</span>
@@ -403,7 +404,7 @@ export default function TrackingPage() {
               </div>
 
               <div className="space-y-3 border-b border-border/80 pb-4 mb-4">
-                {(order.items || []).map((item: any, i: number) => (
+                {(order.items || []).map((item: CartItem, i: number) => (
                   <div key={i} className="text-xs">
                     <div className="flex justify-between font-medium">
                       <span className="text-foreground">

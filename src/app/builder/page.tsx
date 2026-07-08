@@ -2,10 +2,11 @@
 
 import { Check, Minus, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { useCart } from "@/lib/cart-context";
-import { formatNaira, images, getImgSrc } from "@/lib/menu-data";
+import { formatNaira, images } from "@/lib/menu-data";
 
 const swallows = [
   { id: "amala", name: "Amala", price: 500, image: images.amalaBuilder },
@@ -124,8 +125,8 @@ export default function BuilderPage() {
                       <Check className="h-3 w-3" />
                     </span>
                   )}
-                  <img
-                    src={getImgSrc(s.image)}
+                  <Image
+                    src={s.image}
                     alt={s.name}
                     width={160}
                     height={160}
@@ -187,8 +188,8 @@ export default function BuilderPage() {
                       <Check className="h-3 w-3" />
                     </span>
                   )}
-                  <img
-                    src={getImgSrc(s.image)}
+                  <Image
+                    src={s.image}
                     alt={s.name}
                     width={160}
                     height={160}
@@ -252,8 +253,8 @@ export default function BuilderPage() {
             {sides.map((p) => (
               <div key={p.id} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <img
-                    src={getImgSrc(p.image)}
+                  <Image
+                    src={p.image}
                     alt={p.name}
                     width={80}
                     height={80}

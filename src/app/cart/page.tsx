@@ -3,10 +3,11 @@
 import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { useCart } from "@/lib/cart-context";
-import { formatNaira, getImgSrc } from "@/lib/menu-data";
+import { formatNaira } from "@/lib/menu-data";
 
 const DELIVERY_FEE = 1000;
 const COUPONS: Record<string, number> = { ABULA10: 0.1, FIRSTBITE: 0.15 };
@@ -89,8 +90,8 @@ export default function CartPage() {
               className="flex items-center gap-4 rounded-3xl bg-card p-4 shadow-card"
             >
               {item.image && (
-                <img
-                  src={getImgSrc(item.image)}
+                <Image
+                  src={item.image}
                   alt={item.name}
                   width={160}
                   height={160}

@@ -4,7 +4,7 @@ import { ArrowLeft, Banknote, Check, Copy, Info } from "lucide-react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCart } from "@/lib/cart-context";
+import { useCart, type CartItem } from "@/lib/cart-context";
 import { formatNaira } from "@/lib/menu-data";
 
 interface PendingOrder {
@@ -12,7 +12,7 @@ interface PendingOrder {
   subtotal: number;
   discount: number;
   delivery: number;
-  items: any[];
+  items: CartItem[];
 }
 
 const BANK = {
